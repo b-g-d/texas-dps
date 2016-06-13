@@ -1,4 +1,10 @@
+list.of.packages <- c("ggplot2",'tidyr')
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
 library(ggplot2)
+library(tidyr)
+
 setwd('~/personal_projects/texas-dps/')
 by_officer = read.csv('./results/search_by_officer.csv')
 
