@@ -6,12 +6,21 @@ library(ggplot2)
 library(tidyr)
 
 setwd('~/personal_projects/texas-dps/')
-by_officer = read.csv('./results/search_by_officer.csv')
+by_officer = read.csv('./data/groupby_officerid_race.csv')
+
+by_officer_white = by_officer[by_officer$white=='true',]
+by_officer_nonwhite = by_officer[by_officer$white=='false',]
+
+
+
+
 
 search_by_officer = by_officer[by_officer$HA_SEARCHED ==1,]
 
 white_searches = search_by_officer[(search_by_officer$white == 'True'),]
 nonwhite_searches = search_by_officer[(search_by_officer$white != 'True'),]
+
+
 
 colnames(white_searches)[c(7,8)] = c('white_count','white_pct_searched')
 colnames(nonwhite_searches)[c(7,8)] = c('nonwhite_count','nonwhite_pct_searched')
